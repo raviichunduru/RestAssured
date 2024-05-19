@@ -1,6 +1,6 @@
 This project demonstrates how to make HTTP requests (GET, POST, DELETE, and UPDATE) to APIs.
 
-It also covers various ways to construct request bodies, including:
+It also covers various ways to construct request body:
 
 1. Passing as String: You can directly include the request body as a string.
 
