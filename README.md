@@ -1,6 +1,6 @@
 This project demonstrates how to make HTTP requests (GET, POST, DELETE, and UPDATE) to APIs.
 
-It also covers various ways to construct request body:
+It also covers various ways to construct request bodies, including:
 
 1. Passing as String: You can directly include the request body as a string.
 
@@ -15,3 +15,6 @@ It also covers various ways to construct request body:
 6. Using POJO's (Constructor, Getter, Setter)
 
 7. Using POJO's with Lombok annotation to reduce boilerplates.
+
+8. Using POJO's with Lombok annotation and Builder pattern to construct object
+
