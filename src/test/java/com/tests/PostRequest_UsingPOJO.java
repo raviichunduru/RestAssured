@@ -32,10 +32,10 @@ public class PostRequest_UsingPOJO
         Employee employee = new Employee("601","fn1","ln1","email1@gmail.com", favFoods, listOfJobs);
 
         Response response = given()
-                .header("Content-Type", ContentType.JSON)
+                .header("Content-Type", ContentType.JSON)  // expecting response in JSON format
                 .log()
                 .all()
-                .body(employee)
+                .body(employee)  // RestAssured internally uses a serializer to convert the object into JSON format.
                 .post("http://localhost:3000/employees");
 
         response.prettyPrint();
@@ -49,6 +49,7 @@ public class PostRequest_UsingPOJO
         Employee deserializedEmployee = response.as(Employee.class); // JSON --> Class
 
         Assert.assertEquals(deserializedEmployee.getId(),"601");
+        //Assert.assertEquals(deserializedEmployee.getId(),employee.getId());
         Assert.assertEquals(deserializedEmployee.getEmail(),"email1@gmail.com");
         Assert.assertEquals(deserializedEmployee.getListOfJobs(), Arrays.asList("Dev", "Test"));
 

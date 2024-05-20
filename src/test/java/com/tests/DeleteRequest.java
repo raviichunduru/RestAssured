@@ -1,33 +1,26 @@
 package com.tests;
 
-import com.github.javafaker.Faker;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import org.json.JSONObject;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
-import static io.restassured.RestAssured.*;
 
-public class UpdateRequest
+import static io.restassured.RestAssured.given;
+
+public class deleteRequest
 {
     @Test
-    public void updateTest() throws IOException
+    public void deleteTest() throws IOException
     {
-        JSONObject request = new JSONObject();
-        request.put("firstname",new Faker().name().firstName());
-        request.put("lastname",new Faker().name().lastName());
-
-        Response response = given()
-                .header("Content-Type", ContentType.JSON)
-                .pathParams("id",300)
+        Response response  = given()
                 .log()
                 .all()
-                .body(request.toMap())
-                .put("http://localhost:3000/employees/{id}");
+                .pathParams("id",300)
+                .delete("http://localhost:3000/employees/{id}");
 
         response.prettyPrint();
         System.out.println("Response Code = " + response.getStatusCode());

@@ -1,41 +1,35 @@
 package com.tests;
 
+import com.github.javafaker.Faker;
+import com.pojo.Employee;
+import com.sun.net.httpserver.Request;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.json.JSONObject;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
 import static io.restassured.RestAssured.*;
 
-public class GetRequest
+public class updateRequest
 {
     @Test
-    public void getTest_PathParameter()
+    public void updateTest() throws IOException
     {
+        JSONObject request = new JSONObject();
+        request.put("firstname",new Faker().name().firstName());
+        request.put("lastname",new Faker().name().lastName());
+
         Response response = given()
-                .pathParams("id","49f7")
+                .header("Content-Type", ContentType.JSON)
+                .pathParams("id",300)
                 .log()
                 .all()
-                .get("http://localhost:3000/employees/{id}");
-
-        response.prettyPrint();
-        System.out.println("Response Code = " + response.getStatusCode());
-        System.out.println("Response Time in MilliSeconds = " + response.getTimeIn(TimeUnit.MILLISECONDS));
-    }
-
-    @Test
-    public void getTest_QueryParameter() throws IOException
-    {
-        Response response = given()
-                .queryParam("id",601)
-                //.queryParam("firstname","Kami")
-                .log()
-                .all()
-                .get("http://localhost:3000/employees/");
+                .body(request.toMap())
+                .put("http://localhost:3000/employees/{id}");
 
         response.prettyPrint();
         System.out.println("Response Code = " + response.getStatusCode());
