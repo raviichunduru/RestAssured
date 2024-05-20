@@ -1,6 +1,5 @@
 package com.tests;
 
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
@@ -11,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 
-public class deleteRequest
+public class DeleteRequest
 {
     @Test
     public void deleteTest() throws IOException

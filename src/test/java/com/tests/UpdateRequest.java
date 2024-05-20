@@ -1,8 +1,6 @@
 package com.tests;
 
 import com.github.javafaker.Faker;
-import com.pojo.Employee;
-import com.sun.net.httpserver.Request;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.json.JSONObject;
@@ -14,7 +12,7 @@ import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
 import static io.restassured.RestAssured.*;
 
-public class updateRequest
+public class UpdateRequest
 {
     @Test
     public void updateTest() throws IOException
